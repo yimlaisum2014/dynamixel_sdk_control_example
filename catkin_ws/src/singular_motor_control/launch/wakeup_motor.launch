@@ -1,10 +1,17 @@
 <launch>
 
+    <arg name="motor_id"                       default= "5" />
+    <arg name="motor_baudrate"                 default= "1000000"/>
+    <arg name="motor_devicename"               default="/dev/ttyDXL"/>
+
   <node
     name="dynamixel_read_write"
     pkg="dynamixel_sdk_examples"
-    type="read_write_node.py"
+    type="read_write_node_param.py"
     output="screen">
+    <param name="/id"                     value="$(arg motor_id)"/>
+    <param name="/baudrate"               value="$(arg motor_baudrate)"/>
+    <param name="/devicename"             value="$(arg motor_devicename)"/>
   </node>
 
 </launch>
